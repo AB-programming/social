@@ -56,7 +56,7 @@ CREATE TABLE comment(
 ```
 ### 3、后端启动：
 ​	**我是在IDEA中部署tomcat8，Jre是1.8，端口号是8082，根路径是/，勾选Deploy applications configured in Tomcat instance，当然也可以自己去tomcat8中部署，war包在social_spring/social/social/target下，social-1.0.war**
-    **注意更改social_spring/social/social/src/main/resources/jdbc.properties的数据库管理员和密码**
+    **【注意更改social_spring/social/social/src/main/resources/jdbc.properties的数据库管理员和密码】**
 ### 4、前端启动
 ​	**有vue和脚手架的环境后，进入social_vue目录，执行npm run serve启动**
 ### 5、
