@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="social:war">
+    <output-path>$PROJECT_DIR$/social/social/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>social</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="social-1.0.war">
+      <element id="artifact" artifact-name="social:war exploded" />
+    </root>
+  </artifact>
+</component>

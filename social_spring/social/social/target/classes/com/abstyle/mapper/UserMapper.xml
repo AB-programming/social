@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abstyle.mapper.UserMapper">
+    <!--
+        完成实体类与表中列名的映射
+        private String name;
+        private String password;
+        private String userName;
+        private String age;
+        private String sex;
+        private String occupation;
+        private String signature;
+    -->
+    <resultMap id="usermap" type="user">
+        <id property="name" column="name"/>
+        <id property="password" column="password"/>
+        <id property="userName" column="user_name"/>
+        <id property="age" column="age"/>
+        <id property="sex" column="sex"/>
+        <id property="occupation" column="occupation"/>
+        <id property="signature" column="signature"/>
+    </resultMap>
+
+    <!--
+        int createUser(User user);
+    -->
+    <insert id="createUser" parameterType="user">
+        insert into user values(#{name},#{password},#{userName},#{age},#{sex},#{occupation},#{signature})
+    </insert>
+
+    <!--
+        User login(User user)
+    -->
+    <select id="selectUser" resultType="user">
+        select name,password,user_name,age,sex,occupation,signature
+        from user
+        <where>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+        </where>
+    </select>
+
+    <!--
+        int updateUser(User user)
+    -->
+    <update id="updateUser" parameterType="user">
+        update user
+        <set>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="age != null and age != ''">
+                age = #{age},
+            </if>
+            <if test="sex != null and sex != ''">
+                sex = #{sex},
+            </if>
+            <if test="occupation != null and occupation != ''">
+                occupation = #{occupation},
+            </if>
+            <if test="signature != null and signature != ''">
+                signature = #{signature}
+            </if>
+            where name = #{name}
+        </set>
+    </update>
+
+    <delete id="deleteUser" parameterType="string">
+        delete from user where name = #{name}
+    </delete>
+
+    <select id="selectUserByName" parameterType="string" resultType="user">
+        select name,password,user_name,age,sex,occupation,signature
+        from user
+        where name = #{name}
+    </select>
+</mapper>

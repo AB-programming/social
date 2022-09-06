@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abstyle.mapper.CommentMapper">
+
+    <resultMap id="commentMap" type="comment">
+        <id property="commentId" column="comment_id"/>
+        <result property="commentTarget" column="comment_target"/>
+        <result property="commentName" column="comment_name"/>
+        <result property="commentUserName" column="comment_user_name"/>
+        <result property="commentContent" column="comment_content"/>
+        <result property="commentTime" column="comment_time"/>
+    </resultMap>
+
+    <sql id="comment">
+        comment_id, comment_target, comment_name, comment_user_name, comment_content, comment_time
+    </sql>
+
+    <insert id="createComment" parameterType="comment">
+        insert into comment values(#{commentId}, #{commentTarget}, #{commentName}, #{commentUserName}, #{commentContent}, #{commentTime})
+    </insert>
+
+    <select id="selectCommentByTarget" parameterType="string" resultMap="commentMap">
+        select <include refid="comment"></include>
+        from comment
+        where comment_target = #{commentTarget}
+        order by comment_time desc
+    </select>
+
+    <select id="selectComment" resultMap="commentMap">
+        select <include refid="comment"></include>
+        from comment
+    </select>
+
+    <delete id="deleteCommentById" parameterType="string">
+        delete from comment
+        where comment_id = #{commentId}
+    </delete>
+
+</mapper>

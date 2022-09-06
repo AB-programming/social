@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abstyle.mapper.FavoriteMapper">
+
+    <resultMap id="favoriteMap" type="favorite">
+        <id property="favoriteId" column="favorite_id"/>
+        <result property="favoriteName" column="favorite_name"/>
+        <result property="favoriteTarget" column="favorite_target"/>
+    </resultMap>
+
+    <select id="selectFavoriteByTarget" parameterType="string" resultMap="favoriteMap">
+        select favorite_id, favorite_name, favorite_target
+        from favorite
+        where favorite_target = #{favoriteTarget}
+    </select>
+
+    <select id="selectFavorite" resultMap="favoriteMap">
+        select favorite_id, favorite_name, favorite_target
+        from favorite
+    </select>
+
+    <select id="selectIsFavorite" parameterType="favorite" resultType="favorite">
+        select favorite_id, favorite_name, favorite_target
+        from favorite
+        where favorite_name = #{favoriteName} and favorite_target = #{favoriteTarget}
+    </select>
+
+    <insert id="createFavorite" parameterType="favorite">
+        insert into favorite values(#{favoriteId}, #{favoriteName}, #{favoriteTarget})
+    </insert>
+</mapper>
