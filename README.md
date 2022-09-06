@@ -15,11 +15,8 @@
 ## 启动方式
 
 ### 1、前提条件：
-
 ​	**jdk8、tomcat8、node环境、vue2、vue脚手架3、MySQL，后端最好是IDE——Intellij IDEA**
-
-### 2、建库建表
-
+### 2、建库建表,执行以下sql语句
 ```sql
 CREATE DATABASE social;
 use social;
@@ -57,15 +54,11 @@ CREATE TABLE comment(
     comment_time varchar(255)
 )ENGINE =InnoDB DEFAULT CHARSET =utf8;
 ```
-
 ### 3、后端启动：
-
 ​	**我是在IDEA中部署tomcat8，Jre是1.8，端口号是8082，根路径是/，勾选Deploy applications configured in Tomcat instance，当然也可以自己去tomcat8中部署，war包在social_spring/social/social/target下，social-1.0.war**
-
 ### 4、前端启动
-
-​	有vue和脚手架的环境后，进入social_vue目录，执行npm run serve启动
-
-### 5、全部启动没有异常后访问http://localhost:8080
+​	**有vue和脚手架的环境后，进入social_vue目录，执行npm run serve启动**
+### 5、
+    **全部启动没有异常后访问http://localhost:8080**
 
 
